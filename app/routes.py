@@ -12,11 +12,6 @@ def about():
     title = "About - BE Studios"
     return render_template("about.html", title=title)
 
-@app.route('/ourteam')
-def ourteam():
-    title = "Our Team - BE Studios"
-    return render_template("ourteam.html", title=title)
-
 @app.route('/services')
 def services():
     title = "Services - BE Studios"
@@ -26,3 +21,13 @@ def services():
 def booking():
     title = "Booking - BE Studios"
     return render_template("booking.html", title=title)
+
+@app.route('/signin')
+def signin():
+    title = "Sign In - BE Studios"
+    return render_template("signin.html", title=title)
+
+@app.route('/signup')
+def signup():
+    title = "Sign Up - BE Studios"
+    return render_template("signup.html", title=title)
