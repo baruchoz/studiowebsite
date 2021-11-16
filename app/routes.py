@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, redirect, url_for, flash, session, request
 
 
 @app.route('/')
@@ -22,12 +22,12 @@ def booking():
     title = "Booking - BE Studios"
     return render_template("booking.html", title=title)
 
-@app.route('/signin')
-def signin():
-    title = "Sign In - BE Studios"
-    return render_template("signin.html", title=title)
-
 @app.route('/signup')
 def signup():
     title = "Sign Up - BE Studios"
     return render_template("signup.html", title=title)
+
+@app.route('/signin')
+def signin():
+    title = "Sign In - BE Studios"
+    return render_template("signin.html", title=title)
