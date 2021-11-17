@@ -1,4 +1,6 @@
 flaskvenv/
 __pycache__
-
+.vscode/
 .env
+
+app.db
