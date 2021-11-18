@@ -14,15 +14,18 @@
       </a>
 
       <ul class="nav col-12 col-md-6 mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-dark">Home</a></li>
-        <li><a href="/services" class="nav-link px-2 link-secondary">Services</a></li>
-        <li><a href="/booking" class="nav-link px-2 link-secondary">Booking</a></li>
-        <li><a href="/login" class="nav-link px-2 link-secondary">Sign in</a></li>
-        <li><a href="/register" class="nav-link px-2 link-secondary">Register</a></li>
-        <li><a href="/createpost" class="nav-link px-2 link-secondary">Reviews</a></li>
+        <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-dark">Home</a></li>
+        <li><a href="{{ url_for('services') }}" class="nav-link px-2 link-secondary">Services</a></li>
+        <!-- <li><a href="{{ url_for('login') }}" class="nav-link px-2 link-secondary">Sign in</a></li> -->
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('shop') }}" class="nav-link px-2 link-secondary">Shop Services</a></li>
+        <li><a href="{{ url_for('createpost') }}" class="nav-link px-2 link-secondary">Leave a Review</a></li>
+        {% else %}
+        <li><a href="{{ url_for('register') }}" class="nav-link px-2 link-secondary">Register</a></li>
+        {% endif %}
       </ul>
         
-        <li class="nav-item col-md-auto  justify-content-center  justify-content-md-between dropdown">
+        <!-- <li class="nav-item col-md-auto  justify-content-center  justify-content-md-between dropdown">
           <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account
           </a>
@@ -32,6 +35,26 @@
             <li><a class="dropdown-item" href="#">Logout</a></li>
             
           </ul>
-        </li>
+        </li> -->
+
+        <ul class="navbar-nav ms-auto">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('my_account') }}">My Account</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('cart') }}">View Cart</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+          {% endif %}
+          
     </header>
   </div>

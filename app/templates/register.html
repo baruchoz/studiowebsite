@@ -20,13 +20,18 @@
                         
                         {{ form.username.label(class='text-light fw-bolder') }}
                         {{ form.username(class='form-control', placeholder='Username') }}
+                        {% for error in form.username.errors %}
+                        <span style="color:white;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
                     
                     <div class="form-outline mb-4">
                         
                         {{ form.email.label(class='text-light fw-bolder') }}
                         {{ form.email(class='form-control', placeholder='Email') }}
-                        
+                        {% for error in form.email.errors %}
+                        <span style="color:white;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
 
         
@@ -34,12 +39,20 @@
                         
                         {{ form.password.label(class='text-light fw-bolder') }}
                         {{ form.password(class='form-control', placeholder='Password') }}
+                        {% for error in form.password.errors %}
+                        <span style="color:white;">[{{ error }}]</span>
+                        {% endfor %}
+
                     </div>
 
                     <div class="form-outline mb-4">
                         
                         {{ form.confirm_pass.label(class='text-light fw-bolder') }}
                         {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
+                        {% for error in form.confirm_pass.errors %}
+                        <span style="color:white;">[{{ error }}]</span>
+                        {% endfor %}
+
                     </div>
         
                     <!-- <button class="btn btn-secondary btn-lg btn-block" type="submit">Login</button> -->

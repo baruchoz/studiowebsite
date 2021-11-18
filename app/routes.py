@@ -98,9 +98,13 @@ def services():
     title = "Services - BE Studios"
     return render_template("services.html", title=title)
 
+@app.route('/shop')
+def shop():
+    
+    return render_template("shop.html", title='Shop - BE Studios')
 
 
-@app.route('/booking')
-def booking():
-    title = "Booking - BE Studios"
-    return render_template("booking.html", title=title)
+@app.route('/cart')
+def cart():
+    
+    return render_template("cart.html", title='Cart - BE Studios')
