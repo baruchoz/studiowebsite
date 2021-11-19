@@ -3,16 +3,15 @@
 {% block content %}
 
 <h1>{{ product.name }}</h1>
-
-    <div class="card">
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-1 py-5">
+    <div class="card card-cover h-100 overflow-hidden text-white bg-light rounded-5 shadow-lg">
         <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
         <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">${{ product.price }}</p>
+            <h5 class="card-title text-dark">{{ product.name }}</h5>
+            <p class="card-text text-dark">${{ product.price }}</p>
             <a href="{{ url_for('add_to_cart', prod_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
         </div>
-    </div>       
-
-
+    </div>  
+</div>       
 
 {% endblock content %}

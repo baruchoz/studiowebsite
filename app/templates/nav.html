@@ -1,10 +1,6 @@
   <div class="container ">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom rounded">
-      <!-- <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
-        <svg class="bi me-2" style="color: blue;" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a> -->
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
-        <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
         <svg xmlns="http://www.w3.org/2000/svg" style="color: #0275d8;" width="16" height="16" fill="currentColor" class="bi bi-vinyl" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
             <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM4 8a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path>
@@ -16,46 +12,36 @@
       <ul class="nav col-12 col-md-6 mb-2 justify-content-center mb-md-0">
         <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-dark">Home</a></li>
         <li><a href="{{ url_for('services') }}" class="nav-link px-2 link-secondary">Services</a></li>
-        <!-- <li><a href="{{ url_for('login') }}" class="nav-link px-2 link-secondary">Sign in</a></li> -->
         {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('shop') }}" class="nav-link px-2 link-secondary">Shop</a></li>
-        <li><a href="{{ url_for('createpost') }}" class="nav-link px-2 link-secondary">Leave a Review</a></li>
+        
+        <li><a href="{{ url_for('products') }}" class="nav-link px-2 link-secondary">Shop</a></li>
+        <li><a href="{{ url_for('cart') }}" class="nav-link px-2 link-secondary"><i class="fas fa-shopping-cart"></i></a></li>
+        
         {% else %}
         <li><a href="{{ url_for('register') }}" class="nav-link px-2 link-secondary">Register</a></li>
         {% endif %}
       </ul>
         
-        <!-- <li class="nav-item col-md-auto  justify-content-center  justify-content-md-between dropdown">
-          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
+      <ul class="navbar-nav ms-auto">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
           </a>
-          <ul class="dropdown-menu dropdown-menu-end bg-light" style="border: rounded 1px solid rgb(100, 103, 107);" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">My Account</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ url_for('my_account') }}">My Account</a></li>
             
+            
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
           </ul>
-        </li> -->
-
-        <ul class="navbar-nav ms-auto">
-          {% if current_user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menu
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ url_for('my_account') }}">My Account</a></li>
-              <li><a class="dropdown-item" href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-              <li><a class="dropdown-item" href="{{ url_for('cart') }}">View Cart</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
-            </ul>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-          </li>
-          {% endif %}
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
           
     </header>
   </div>

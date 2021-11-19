@@ -2,21 +2,27 @@
 
 {% block content %}
 
-<h1>Products</h1>
-
-<div class="row">
+<div class="container pb-4">
+    <h1>All Prices Based on Hourly Rates</h1>
+</div>
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     {% for p in products %}
-    <div class="col-12 col-sm-6 col-md-4">
-        <div class="card">
-                <img src="{{ p.image_url }}" class="card-img-top" alt="{{ p.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ p.name }}</h5>
-                    <p class="card-text">${{ p.price }}</p>
-                    <a href="{{ url_for('product_detail', prod_id=p.id) }}" class="btn btn-primary">Product Info</a>
+    <div class="col mb-5">
+        <div class="card h-100"> 
+            <img class="card-img-top" src="{{ p.image_url }}" alt="{{ p.name }}">              
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{{ p.name }}</h5>
+                    ${{ p.price }}
                 </div>
             </div>
-        
-    </div>        
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                    <a class="btn btn-outline-dark mt-auto bg-light" href="{{ url_for('product_detail', prod_id=p.id) }}">Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
 </div>
 
